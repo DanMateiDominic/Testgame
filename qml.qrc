@@ -1,0 +1,33 @@
+<RCC>
+    <qresource prefix="/">
+        <file>main.qml</file>
+        <file>components/MateiButton.qml</file>
+        <file>components/PlayerCircle.qml</file>
+        <file>views/GameMenu.qml</file>
+        <file>views/TheGame.qml</file>
+        <file>views/ChooseLevelView.qml</file>
+        <file>components/LevelDelegate.qml</file>
+        <file>components/CircleButton.qml</file>
+        <file>box2d_common/BoxBody.qml</file>
+        <file>box2d_common/ChainBody.qml</file>
+        <file>box2d_common/CircleBody.qml</file>
+        <file>box2d_common/EdgeBody.qml</file>
+        <file>box2d_common/ImageBoxBody.qml</file>
+        <file>box2d_common/PhysicsItem.qml</file>
+        <file>box2d_common/PolygonBody.qml</file>
+        <file>box2d_common/RectangleBoxBody.qml</file>
+        <file>box2d_common/ScreenBoundaries.qml</file>
+        <file>box2d_common/Wall.qml</file>
+        <file>components/MovingCircle.qml</file>
+        <file>box2d_common/ItemCircleBody.qml</file>
+        <file>components/BreakableRectangle.qml</file>
+        <file>powerups/AbstractPowerup.qml</file>
+        <file>powerups/ExtraBallPowerup.qml</file>
+        <file>visual/ShootingPath.qml</file>
+        <file>visual/FasterSpeedCircle.qml</file>
+        <file>functions/Functions.qml</file>
+        <file>powerups/SplittingPowerup.qml</file>
+        <file>views/GameWonView.qml</file>
+        <file>views/GameLostView.qml</file>
+    </qresource>
+</RCC>
