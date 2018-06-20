@@ -5,7 +5,7 @@ Rectangle{
     signal goToMenu()
     signal playAgain()
 
-    color:"lightgray"
+    color: 'transparent'
     Text{
         text:"You lost"
         anchors.horizontalCenter: parent.horizontalCenter

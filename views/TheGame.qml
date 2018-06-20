@@ -2,7 +2,7 @@ import QtQuick 2.7
 import Box2DStatic 2.0
 import LevelLoader 1.0
 import QtGraphicalEffects 1.0
-import QtQuick.Particles 2.0
+import QtMultimedia 5.9
 
 
 import "../components"
@@ -42,6 +42,8 @@ Rectangle {
     property int spawnedLinesCount: 1
     property var spawnedRectanglesList: []
 
+    color: 'transparent'
+
     onDestroyedBallsChanged: {
         if (destroyedBalls == launchedBalls) {
             ballsCount += extraBalls
@@ -70,34 +72,6 @@ Rectangle {
                 angle < -80 && angle > -90)
             angle = -80
         angleRad = (angle - 90) * Math.PI / 180
-    }
-
-    Image {
-        anchors.fill: parent
-        source: "qrc:/assets/galaxy.jpg"
-        fillMode: Image.PreserveAspectCrop
-
-        ParticleSystem {
-            anchors.fill: parent
-            ImageParticle {
-                source: "qrc:/assets/star.png"
-                rotationVariation: 270
-            }
-
-            Emitter {
-                id: starEmitter
-                emitRate: 50
-                lifeSpan: 5000
-                size: 20
-                sizeVariation: 10
-                anchors.fill: parent
-            }
-
-            Turbulence {
-                anchors.fill: parent
-                strength: 5
-            }
-        }
     }
 
     World {
@@ -334,6 +308,7 @@ Rectangle {
     }
 
     function spawnBall() {
+        spawnSound.play()
         var angle = theGame.angleRad;
         var newBall = bullet.createObject(theGame);
         newBall.x = startingCircle.x;
@@ -406,9 +381,13 @@ Rectangle {
 
         for (var i = 0; i < spawnedRectanglesList.length; i++) {
             spawnedRectanglesList[i].y += rectangleSize
-            if (Math.floor(spawnedRectanglesList[i].y) >= Math.floor(levelContainer.height + (9 * rectangleSize))
-                    && spawnedRectanglesList[i].objectName !== "powerup")
-                gameLost()
+            if (Math.floor(spawnedRectanglesList[i].y) >= Math.floor(levelContainer.height + (9 * rectangleSize))) {
+                if (spawnedRectanglesList[i].objectName !== "powerup")
+                    gameLost()
+                else {
+                    spawnedRectanglesList[i].visible = false
+                }
+            }
         }
     }
 
@@ -448,5 +427,10 @@ Rectangle {
 
     Functions {
         id: theGameFunctions
+    }
+
+    SoundEffect {
+        id: spawnSound
+        source: "qrc:/assets/sfx/spawn.wav"
     }
 }

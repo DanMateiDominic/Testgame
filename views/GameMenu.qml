@@ -8,13 +8,11 @@ Rectangle {
     id: background
 
     signal playPressed
-    signal settingsPressed
-    signal helpPressed
     signal infinitePressed
 
     focus: true
 
-    color: 'cyan'
+    color: 'transparent'
     Keys.onSpacePressed: background.color = Qt.rgba(Math.random(),Math.random(),Math.random(),1)
 
     Text {
@@ -22,7 +20,9 @@ Rectangle {
         text:"Bricks"
         anchors.horizontalCenter: parent.horizontalCenter
         font.pixelSize: 35
-        color:"black"
+        color:"#222222"
+        style: Text.Outline
+        styleColor: "darkGray"
     }
 
     Column {
@@ -41,20 +41,6 @@ Rectangle {
             canBeClicked: true
             onButtonClicked: {
                 infinitePressed()
-            }
-        }
-        MateiButton {
-            buttonText: 'Settings'
-            canBeClicked: false
-            onButtonClicked: {
-                settingsPressed()
-            }
-        }
-        MateiButton {
-            buttonText: 'Help'
-            canBeClicked: false
-            onButtonClicked: {
-                helpPressed()
             }
         }
     }

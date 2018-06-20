@@ -1,4 +1,5 @@
 import QtQuick 2.0
+import QtMultimedia 5.9
 
 Item {
     property var splittingPowerupRef
@@ -19,7 +20,12 @@ Item {
                     newRectangle.y = rectangleSize * i + levelContainer.height
                     newRectangle.size = rectangleSize - 6
                     newRectangle.durability = levelMap[i][j]
-                    newRectangle.brokenCallback = function() {rectanglesLeft--}
+                    newRectangle.brokenCallback = function() {
+                        rectanglesLeft--
+                    }
+                    newRectangle.contactCallback = function() {
+                        hitSound.play()
+                    }
                     spawnedRectanglesList[spawnedRectanglesCount] = newRectangle
                     spawnedRectanglesCount++
                     rectanglesLeft++
@@ -30,7 +36,10 @@ Item {
                         newExtraBallPowerup.size = 20
                         newExtraBallPowerup.x = rectangleSize * j + rectangleSize / 2 - newExtraBallPowerup.size / 2
                         newExtraBallPowerup.y = rectangleSize * i + rectangleSize / 2 - newExtraBallPowerup.size / 2 + levelContainer.height
-                        newExtraBallPowerup.powerUpFunction = function(collidedSphere) {extraBalls++}
+                        newExtraBallPowerup.powerUpFunction = function(collidedSphere) {
+                            powerupSound.play()
+                            extraBalls++
+                        }
                         spawnedRectanglesList[spawnedRectanglesCount] = newExtraBallPowerup
                         spawnedRectanglesCount++
                     }
@@ -51,5 +60,15 @@ Item {
                 }
             }
         }
+    }
+
+    SoundEffect {
+        id: powerupSound
+        source: "qrc:/assets/sfx/powerup.wav"
+    }
+
+    SoundEffect {
+        id: hitSound
+        source: "qrc:/assets/sfx/hit.wav"
     }
 }

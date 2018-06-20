@@ -3,5 +3,9 @@
         <file>assets/astronaut.png</file>
         <file>assets/star.png</file>
         <file>assets/galaxy.jpg</file>
+        <file>assets/sfx/spawn.wav</file>
+        <file>assets/sfx/game_lost.wav</file>
+        <file>assets/sfx/hit.wav</file>
+        <file>assets/sfx/powerup.wav</file>
     </qresource>
 </RCC>

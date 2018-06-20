@@ -1,5 +1,7 @@
 import QtQuick 2.0
 import Box2DStatic 2.0;
+import QtMultimedia 5.9
+
 import "../box2d_common"
 
 RectangleBoxBody {
@@ -7,6 +9,7 @@ RectangleBoxBody {
     property int size: 40
     property int durability
     property var brokenCallback
+    property var contactCallback
 
     width: size
     height: size
@@ -17,14 +20,17 @@ RectangleBoxBody {
     active: visible
     world: physicsWorld
     border.color: "darkGray"
+
     Text{
         text:durability
         color:'white'
         anchors.centerIn: parent
     }
+
     onBeginContact: {
-        durability = durability - 1
-        if(durability == 0) {
+        contactCallback()
+        durability--
+        if (durability == 0) {
             brokenCallback()
             breakableRect.body.target.destroy();
         }
