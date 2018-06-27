@@ -29,5 +29,7 @@
         <file>powerups/SplittingPowerup.qml</file>
         <file>views/GameWonView.qml</file>
         <file>views/GameLostView.qml</file>
+        <file>views/LeaderboardView.qml</file>
+        <file>delegates/LeaderboardDelegate.qml</file>
     </qresource>
 </RCC>

@@ -139,6 +139,9 @@ Window {
                 onInfinitePressed: {
                     gameStack.push(theGameComponent, {infiniteMode: true})
                 }
+                onLeaderboardPressed: {
+                    gameStack.push(leaderboardComponent)
+                }
             }
         }
 
@@ -193,6 +196,13 @@ Window {
                         gameStack.push(theGameComponent, {infiniteMode: true})
                     })
                 }
+            }
+        }
+
+        Component {
+            id: leaderboardComponent
+            LeaderboardView {
+
             }
         }
     }

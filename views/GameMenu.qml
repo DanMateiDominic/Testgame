@@ -9,6 +9,7 @@ Rectangle {
 
     signal playPressed
     signal infinitePressed
+    signal leaderboardPressed
 
     focus: true
 
@@ -41,6 +42,13 @@ Rectangle {
             canBeClicked: true
             onButtonClicked: {
                 infinitePressed()
+            }
+        }
+        MateiButton {
+            buttonText: 'Leaderboard'
+            canBeClicked: true
+            onButtonClicked: {
+                leaderboardPressed()
             }
         }
     }
